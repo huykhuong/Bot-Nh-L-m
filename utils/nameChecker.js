@@ -1,0 +1,15 @@
+module.exports.checkName = value => {
+  if (value === 'StrawberryCookie') return 'Huy Bánh'
+  else if (value === 'Subek') return 'Đăng'
+  else if (value === 'Darren') return 'Khang Darren'
+  else if (value === 'Light') return 'Tiến'
+  else if (value === 'Azul') return 'Hảo'
+  else if (value === 'Simoke') return 'Tuyên'
+  else if (value === 'KSlay') return 'K Lầy'
+  else if (value === 'Junsil') return 'Béo'
+  else if (value === 'Người Chơi Kỹ Lăng') return 'Tuấn'
+  else if (value === 'khangdaboi') return 'Khangdaboi'
+  else if (value === 'Friendly Rock') return 'Long Phạm'
+  else if (value === 'l0ngle') return 'Long Valorant'
+  else if (value === 'iamhoudini') return 'Hoàng'
+}

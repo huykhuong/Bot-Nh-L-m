@@ -7,7 +7,6 @@ module.exports = {
     const q = queue.songs
       .map((song, i) => `${i === 0 ? 'Đang hát:' : `${i}.`} ${song.name} - \`${song.formattedDuration}\``)
       .join('\n')
-    console.log(queue.songs)
     message.channel.send(`${client.emotes.queue} | **Server Queue**\n${q}`)
   }
 }
