@@ -29,6 +29,7 @@
     "distube": "^3.3.1",
     "dotenv": "^16.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "ffmpeg-static": "^4.4.1",
     "libsodium-wrappers": "^0.7.9"
   },
   "devDependencies": {
