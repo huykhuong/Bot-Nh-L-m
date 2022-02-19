@@ -94,20 +94,20 @@ module.exports = {
       })
 
     let name1 = queue.songs[args[0]].name
-    let name2 = queue.songs[args[1]].name
 
-    Array.prototype.swapItems = function (a, b) {
-      this[a] = this.splice(b, 1, this[a])[0]
+    Array.prototype.moveSong = function (itemIndex, targetIndex) {
+      let itemRemoved = this.splice(itemIndex, 1) // splice() returns the remove element as an array
+      this.splice(targetIndex, 0, itemRemoved[0]) // Insert itemRemoved into the target index
       return this
     }
 
-    queue.songs = queue.songs.swapItems(args[0], args[1])
+    queue.songs = queue.songs.moveSong(args[0], args[1])
 
     return message.channel.send({
       embeds: [
         {
           title: 'Đã move thứ tự bài hát',
-          description: `Đã swap vị trí hai bài \`${name1}\` và \`${name2}\` với nhau`,
+          description: `Đã move bài \`${name1}\` lên vị trí số ${args[1]}`,
           color: 'E91E63'
         }
       ]

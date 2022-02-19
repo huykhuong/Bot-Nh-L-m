@@ -75,16 +75,15 @@ client.on('messageCreate', async message => {
   const command = args.shift().toLowerCase()
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
   if (!cmd) return
-  // if (cmd.inVoiceChannel && !message.member.voice.channel) {
-  //   return message.channel.send({
-  //     embeds: [
-  //       {
-  //         description: `Join room rồi hẵn chạy lệnh man`,
-  //         color: 'E91E63'
-  //       }
-  //     ]
-  //   })
+
+  // const member = message.guild.member('323493729488863242')
+  // if (member.presence.status === 'online') {
+  //   let channel = member.guild.channels.resolve('943670868872142898')
+  //   console.log('eyyo')
+  //   let text = 'eyyo'
+  //   channel.send(text)
   // }
+
   try {
     cmd.run(client, message, args)
   } catch (e) {
@@ -92,6 +91,24 @@ client.on('messageCreate', async message => {
     message.channel.send(`${client.emotes.error} | Error: \`${e}\``)
   }
 })
+
+// client.on('guildMemberUpdate', (oldMember, newMember) => {
+//   guild.members.fetch().then(fetchedMembers => {
+// 	const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
+// 	// Now you have a collection with all online member objects in the totalOnline variable
+// 	console.log(`There are currently ${totalOnline.size} members online in this guild!`);
+// });
+// })
+
+// client.on('presenceUpdate', (oldMember, newMember) => {
+//   if (newMember.presence.game && newMember.presence.game.streaming && !oldMember.presence.game) {
+//     newMember.guild.channels
+//       .find('id', streamChannelId)
+//       .send(
+//         `${newMember.displayName} has started streaming \`${newMember.presence.game.name}\`! Go check the stream out if you're interested!\n<${newMember.presence.game.url}>`
+//       )
+//   }
+// })
 
 const status = queue =>
   `Filter: \`${queue.filters.join(', ') || 'Off'}\` | Loop: \`${
