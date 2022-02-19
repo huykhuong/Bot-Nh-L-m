@@ -9,6 +9,13 @@ module.exports = {
     const today = new Date()
     scheduleArray.forEach(element => {
       if (element.date.getDate() === today.getDate()) {
+        if (element.team1 === 'WEIBO GAMING') {
+          matches.push(`\`${element.team1}\` vs ${element.team2}\n`)
+          return
+        } else if (element.team2 === 'WEIBO GAMING') {
+          matches.push(`${element.team1} vs \`${element.team2}\`\n`)
+          return
+        }
         matches.push(`${element.team1} vs ${element.team2}\n`)
       }
     })
