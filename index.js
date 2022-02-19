@@ -77,14 +77,6 @@ client.on('messageCreate', async message => {
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command))
   if (!cmd) return
 
-  // const member = message.guild.member('323493729488863242')
-  // if (member.presence.status === 'online') {
-  //   let channel = member.guild.channels.resolve('943670868872142898')
-  //   console.log('eyyo')
-  //   let text = 'eyyo'
-  //   channel.send(text)
-  // }
-
   try {
     cmd.run(client, message, args)
   } catch (e) {
@@ -102,40 +94,40 @@ client.on('messageCreate', async message => {
 // })
 
 //Check to see if Tiến is online
-client.on('presenceUpdate', (oldPresence, newPresence) => {
-  let member = newPresence.member
-  // User id of the user you're tracking status.
-  if (member.id === '406079794296651777') {
-    if (oldPresence.status !== newPresence.status) {
-      // Your specific channel to send a message in.
-      let channel = member.guild.channels.cache.get('409690970142015489')
-      // You can also use member.guild.channels.resolve('<channelId>');
+// client.on('presenceUpdate', (oldPresence, newPresence) => {
+//   let member = newPresence.member
+//   // User id of the user you're tracking status.
+//   if (member.id === '406079794296651777') {
+//     if (oldPresence.status !== newPresence.status) {
+//       // Your specific channel to send a message in.
+//       let channel = member.guild.channels.cache.get('409690970142015489')
+//       // You can also use member.guild.channels.resolve('<channelId>');
 
-      let text = ''
+//       let text = ''
 
-      if (newPresence.status === 'online') {
-        text = 'Tiến onl rồi anh em vô chơi game <@251341269656272897> <@251340811743133696>'
-      } else if (newPresence.status === 'idle') {
-        text = 'Tiến onl rồi anh em vô chơi game <@251341269656272897> <@251340811743133696>'
-      } else if (newPresence.status === 'dnd') {
-        text = 'Tiến onl rồi anh em vô chơi game <@251341269656272897> <@251340811743133696>'
-      } else if (newPresence.status === 'offline') {
-        return
-      }
-      // etc...
+//       if (newPresence.status === 'online') {
+//         text = 'Tiến onl rồi anh em vô chơi game <@251341269656272897> <@251340811743133696>'
+//       } else if (newPresence.status === 'idle') {
+//         text = 'Tiến onl rồi anh em vô chơi game <@251341269656272897> <@251340811743133696>'
+//       } else if (newPresence.status === 'dnd') {
+//         text = 'Tiến onl rồi anh em vô chơi game <@251341269656272897> <@251340811743133696>'
+//       } else if (newPresence.status === 'offline') {
+//         return
+//       }
+//       // etc...
 
-      channel.send({
-        embeds: [
-          {
-            title: 'Alo anh em',
-            description: text,
-            color: 'E91E63'
-          }
-        ]
-      })
-    }
-  }
-})
+//       channel.send({
+//         embeds: [
+//           {
+//             title: 'Alo anh em',
+//             description: text,
+//             color: 'E91E63'
+//           }
+//         ]
+//       })
+//     }
+//   }
+// })
 
 const status = queue =>
   `Filter: \`${queue.filters.join(', ') || 'Off'}\` | Loop: \`${
