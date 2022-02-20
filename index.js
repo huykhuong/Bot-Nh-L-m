@@ -1,6 +1,8 @@
 const { DisTube } = require('distube')
 require('dotenv').config()
 const Discord = require('discord.js')
+const { addSpeechEvent } = require('discord-speech-recognition')
+
 const client = new Discord.Client({
   intents: [
     Discord.Intents.FLAGS.GUILDS,
@@ -9,6 +11,9 @@ const client = new Discord.Client({
     Discord.Intents.FLAGS.GUILD_PRESENCES
   ]
 })
+
+addSpeechEvent(client)
+
 const fs = require('fs')
 const config = require('./config.json')
 const { SpotifyPlugin } = require('@distube/spotify')
@@ -20,6 +25,8 @@ let username
 
 client.config = require('./config.json')
 client.distube = new DisTube(client, {
+  leaveOnFinish: false,
+  leaveOnEmpty: true,
   leaveOnStop: false,
   emitNewSongOnly: true,
   emitAddSongWhenCreatingQueue: false,
@@ -43,7 +50,6 @@ fs.readdir('./commands/', (err, files) => {
   if (jsFiles.length <= 0) return console.log('Could not find any commands!')
   jsFiles.forEach(file => {
     const cmd = require(`./commands/${file}`)
-    console.log(`Loaded ${file}`)
     client.commands.set(cmd.name, cmd)
     if (cmd.aliases) cmd.aliases.forEach(alias => client.aliases.set(alias, cmd.name))
   })
@@ -52,6 +58,21 @@ fs.readdir('./commands/', (err, files) => {
 client.on('ready', () => {
   console.log(`${client.user.tag} is ready to play music.`)
   client.user.setActivity(`music for the homies`, { type: 'PLAYING' })
+})
+
+client.on('speech', async message => {
+  let channel = client.channels.cache.get('943670868872142898')
+  const command = message.content?.toLowerCase()
+  if (command.includes('hey dj play')) {
+    let splitted = message.content.split('play') || message.content.split('Play')
+    let second = splitted[1]
+    channel.send('<p ' + second)
+  }
+  if (command.includes('hey dj skip')) {
+    channel.send('<skip')
+  }
+  console.log(message.content)
+  return
 })
 
 client.on('messageCreate', async message => {
@@ -69,7 +90,7 @@ client.on('messageCreate', async message => {
   else if (message.member.user.username === 'l0ngle') username = 'Long Valorant'
   else if (message.member.user.username === 'iamhoudini') username = 'Hoàng'
 
-  if (message.author.bot || !message.guild) return
+  if (!message.guild) return
   const prefix = config.prefix
   if (!message.content.startsWith(prefix)) return
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
@@ -84,14 +105,6 @@ client.on('messageCreate', async message => {
     message.channel.send(`${client.emotes.error} | Error: \`${e}\``)
   }
 })
-
-// client.on('guildMemberUpdate', (oldMember, newMember) => {
-//   guild.members.fetch().then(fetchedMembers => {
-//     const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online')
-//     // Now you have a collection with all online member objects in the totalOnline variable
-//     console.log(`There are currently ${totalOnline.size} members online in this guild!`)
-//   })
-// })
 
 //Check to see if Tiến is online
 // client.on('presenceUpdate', (oldPresence, newPresence) => {
@@ -138,7 +151,7 @@ client.distube
     queue.textChannel.send({
       embeds: [
         {
-          title: `Đang chơi bài của ${username}`,
+          title: `Playing ${username}'s requested song`,
           description: `\`${song.name}\` - \`${song.formattedDuration}\`\n${status(queue)}`,
           color: 'E91E63'
         }
@@ -149,8 +162,8 @@ client.distube
     queue.textChannel.send({
       embeds: [
         {
-          title: `${username} mới thêm vào queue`,
-          description: `\`${song.name}\` - \`${song.formattedDuration}\`\nNgười thêm: ${song.user}\n${status(queue)}`,
+          title: `${username} added a new song to the queue`,
+          description: `\`${song.name}\` - \`${song.formattedDuration}\`\nBy: ${song.user}\n${status(queue)}`,
           color: 'E91E63'
         }
       ]
@@ -160,8 +173,8 @@ client.distube
     queue.textChannel.send({
       embeds: [
         {
-          title: `Đã thêm playlist vào queue`,
-          description: `\`${song.name}\` - \`${song.formattedDuration}\`\nNgười thêm: ${song.user}\n${status(queue)}`,
+          title: `Added playlist to the queue`,
+          description: `\`${song.name}\` - \`${song.formattedDuration}\`\nBy: ${song.user}\n${status(queue)}`,
           color: 'E91E63'
         }
       ]
@@ -171,26 +184,10 @@ client.distube
     channel.send(`${client.emotes.error} | Lỗi rồi fackkk: ${e.toString().slice(0, 1974)}`)
     console.error(e)
   })
-  .on('empty', channel => channel.send('Anh em out hết rồi, tôi đi luôn đây'))
+  .on('empty', queue => queue.textChannel.send('Ok bye, nobody is here anyway 😔'))
   .on('searchNoResult', (message, query) =>
-    message.channel.send(`${client.emotes.error} | Kiếm không ra bài này rồi man :(( \`${query}\`!`)
+    message.channel.send(`${client.emotes.error} | Couldn't find this song :(( \`${query}\`!`)
   )
-  .on('finish', queue => queue.textChannel.send('Đã hát xong!'))
-// // DisTubeOptions.searchSongs = true
-// .on("searchResult", (message, result) => {
-//     let i = 0
-//     message.channel.send(
-//         `**Choose an option from below**\n${result
-//             .map(song => `**${++i}**. ${song.name} - \`${song.formattedDuration}\``)
-//             .join("\n")}\n*Enter anything else or wait 60 seconds to cancel*`
-//     )
-// })
-// .on("searchCancel", message => message.channel.send(`${client.emotes.error} | Searching canceled`))
-// .on("searchInvalidAnswer", message =>
-//     message.channel.send(
-//         `${client.emotes.error} | Invalid answer! You have to enter the number in the range of the results`
-//     )
-// )
-// .on("searchDone", () => {})
+  .on('finish', queue => queue.textChannel.send('Business is done!'))
 
 client.login(process.env.TOKEN)

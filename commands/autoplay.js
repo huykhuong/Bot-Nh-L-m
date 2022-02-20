@@ -13,7 +13,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Vào phòng trước rồi gọi hẵn autoplay ${username}`,
+            description: `${username}, you need to join a voice channel first before setting autoplay`,
             color: 'E91E63'
           }
         ]
@@ -24,7 +24,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Không có đang chơi bài nào hết man`,
+            description: `Am not playing any song :|`,
             color: 'E91E63'
           }
         ]
@@ -35,7 +35,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Đang bận hát bên phòng ${message.guild.me.voice.channel.name} rồi man`,
+            description: `Am busy singing at ${message.guild.me.voice.channel.name} room now !`,
             color: 'E91E63'
           }
         ]
@@ -43,7 +43,9 @@ module.exports = {
 
     const autoplay = queue.toggleAutoplay()
     message.channel.send(
-      `${client.emotes.success} | \`${autoplay ? `${username} bật Autoplay` : `${username} tắt Autoplay`}\``
+      `${client.emotes.success} | \`${
+        autoplay ? `${username} turned on Autoplay` : `${username} turned off Autoplay`
+      }\``
     )
   }
 }

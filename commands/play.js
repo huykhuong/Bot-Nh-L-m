@@ -11,14 +11,14 @@ module.exports = {
     let username = checker.checkName(message.member.user.username)
 
     const string = args.join(' ')
-    if (!string) return message.channel.send(`Ông quên nhập tên bài hát kìa`)
+    if (!string) return message.channel.send(`You did not provide the name of the song`)
 
     //Check to see if the member is not in a room before calling the command
     if (!channel)
       return message.channel.send({
         embeds: [
           {
-            description: `Vào phòng trước rồi hẵn mở nhạc ${username}`,
+            description: `${username}, you need to join a voice channel before playing a song`,
             color: 'E91E63'
           }
         ]
@@ -29,7 +29,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Đang bận hát bên phòng ${message.guild.me.voice.channel.name} rồi man`,
+            description: `Am busy singing at ${message.guild.me.voice.channel.name} room !`,
             color: 'E91E63'
           }
         ]

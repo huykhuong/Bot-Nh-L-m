@@ -12,4 +12,5 @@ module.exports.checkName = value => {
   else if (value === 'Friendly Rock') return 'Long Phạm'
   else if (value === 'l0ngle') return 'Long Valorant'
   else if (value === 'iamhoudini') return 'Hoàng'
+  else return 'Bot Homemade'
 }

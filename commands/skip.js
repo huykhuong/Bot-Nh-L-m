@@ -10,7 +10,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Chưa có bài nào trong queue hết :|`,
+            description: `The queue is currently empty :|`,
             color: 'E91E63'
           }
         ]
@@ -18,7 +18,7 @@ module.exports = {
     try {
       const song = await queue.skip()
       return message.channel.send({
-        embeds: [{ title: `${username} skip bài này`, color: 'E91E63' }]
+        embeds: [{ title: `${username} skips this song`, color: 'E91E63' }]
       })
     } catch (e) {
       message.channel.send(`${client.emotes.error} | ${e}`)

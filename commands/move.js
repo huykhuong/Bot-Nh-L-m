@@ -9,13 +9,13 @@ module.exports = {
 
     let username = checker.checkName(message.member.user.username)
 
-    if (!queue) return message.channel.send(`${client.emotes.error} | Đang không hát bài nào hết :|`)
+    if (!queue) return message.channel.send(`${client.emotes.error} | Am not singing any song :|`)
 
     if (!channel)
       return message.channel.send({
         embeds: [
           {
-            description: `Vào phòng trước rồi gọi hẵn move bài hát ${username}`,
+            description: `${username}, you need to join a room before moving the position of a song`,
             color: 'E91E63'
           }
         ]
@@ -25,7 +25,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Ông nhập hai thứ tự của hai bài hát vô nha ${username}`,
+            description: `${username}, you need to provide 2 values (one for the current position of the song, the other for the desired position)`,
             color: 'E91E63'
           }
         ]
@@ -35,7 +35,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Ông nhập thiếu thứ tự bài hát kìa ${username}`,
+            description: `${username}, you're missing position value`,
             color: 'E91E63'
           }
         ]
@@ -45,7 +45,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Giá trị phải là số`,
+            description: `The provided values must be numbers`,
             color: 'E91E63'
           }
         ]
@@ -56,7 +56,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Trong lệnh có bài tui đang hát, ông move mấy bài khác đỡ nha`,
+            description: `You're requesting to move a song that I'm singing, try to move other songs`,
             color: 'E91E63'
           }
         ]
@@ -67,7 +67,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Không xài command move khi chỉ còn 1 bài trong queue`,
+            description: `Can't use this command when the queue has 1 song`,
             color: 'E91E63'
           }
         ]
@@ -77,7 +77,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Trong command có move một bài không có thứ tự hợp lệ trong queue`,
+            description: `You're requesting to move the position of a song that does not exist in the queue`,
             color: 'E91E63'
           }
         ]
@@ -87,7 +87,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Trong queue chưa có bài nào hết`,
+            description: `The queue is currently empty`,
             color: 'E91E63'
           }
         ]
@@ -106,8 +106,8 @@ module.exports = {
     return message.channel.send({
       embeds: [
         {
-          title: 'Đã move thứ tự bài hát',
-          description: `Đã move bài \`${name1}\` lên vị trí số ${args[1]}`,
+          title: 'Moved song',
+          description: `Moved song \`${name1}\` to position ${args[1]} in the queue`,
           color: 'E91E63'
         }
       ]

@@ -14,7 +14,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Vào phòng trước rồi gọi hẵn remove bài ${username}`,
+            description: `${username}, you need to join a voice channel to remove a song`,
             color: 'E91E63'
           }
         ]
@@ -24,7 +24,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Ông quên nhập thứ tự bài hát kìa ${username}`,
+            description: `${username}, you did not provide the position of the song`,
             color: 'E91E63'
           }
         ]
@@ -34,7 +34,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Giá trị phải là số`,
+            description: `Value must be of type number`,
             color: 'E91E63'
           }
         ]
@@ -45,7 +45,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Tui đang hát bài này giữa chừng nên không remove được, ông xài command skip đi`,
+            description: `Am singing this song, have some respect man 😠`,
             color: 'E91E63'
           }
         ]
@@ -56,7 +56,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Không xài command remove khi chỉ còn 1 bài trong queue, ông xài command stop đi`,
+            description: `Cannot use this command when there is one song in the queue`,
             color: 'E91E63'
           }
         ]
@@ -66,7 +66,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Không tìm thấy bài hát với thứ tự đó trong queue`,
+            description: `Cannot find that song in the queue`,
             color: 'E91E63'
           }
         ]
@@ -76,7 +76,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Trong queue chưa có bài nào hết`,
+            description: `The queue is currently empty`,
             color: 'E91E63'
           }
         ]
@@ -87,8 +87,8 @@ module.exports = {
     return message.channel.send({
       embeds: [
         {
-          title: 'Đã remove',
-          description: `Đã remove bài \`${name}\` ra khỏi queue`,
+          title: 'Song removed',
+          description: `Removed \`${name}\` from the queue`,
           color: 'E91E63'
         }
       ]

@@ -4,7 +4,7 @@ module.exports = {
   inVoiceChannel: true,
   run: async (client, message, args) => {
     const queue = client.distube.getQueue(message)
-    if (!queue) return message.channel.send(`${client.emotes.error} | Đang không hát bài nào hết!`)
+    if (!queue) return message.channel.send(`${client.emotes.error} | Am not singing any song!`)
     let mode = null
     switch (args[0]) {
       case 'off':
@@ -18,7 +18,7 @@ module.exports = {
         break
     }
     mode = queue.setRepeatMode(mode)
-    mode = mode ? (mode === 2 ? 'Loop queue' : 'Loop bài hát') : 'Off'
-    message.channel.send(`${client.emotes.repeat} | Set chế độ loop là: \`${mode}\``)
+    mode = mode ? (mode === 2 ? 'Loop queue' : 'Loop song') : 'Off'
+    message.channel.send(`${client.emotes.repeat} | Loop mode is: \`${mode}\``)
   }
 }

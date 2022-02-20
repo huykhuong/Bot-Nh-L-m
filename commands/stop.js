@@ -7,12 +7,12 @@ module.exports = {
     let username = checker.checkName(message.member.user.username)
 
     const queue = client.distube.getQueue(message)
-    if (!queue) return message.channel.send(`${client.emotes.error} | Không có bài nào trong queue hết :||`)
+    if (!queue) return message.channel.send(`${client.emotes.error} | The queue is currently empty`)
     queue.stop()
     return message.channel.send({
       embeds: [
         {
-          title: `${username} kêu đừng hát nữa :(`,
+          title: `Ok, guess you don't want to hear me singing anymore 😔`,
           color: 'E91E63'
         }
       ]

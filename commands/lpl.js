@@ -22,8 +22,8 @@ module.exports = {
     message.channel.send({
       embeds: [
         {
-          title: 'Lịch LPL ngày ' + today.getDate() + '/' + (today.getMonth() + 1),
-          description: matches.length === 0 ? 'Nay không đánh trận nào hết' : matches.toString().replace(/,/g, ''),
+          title: 'LPL schedule for ' + today.getDate() + '/' + (today.getMonth() + 1),
+          description: matches.length === 0 ? 'No match found' : matches.toString().replace(/,/g, ''),
           color: 'E91E63'
         }
       ]
