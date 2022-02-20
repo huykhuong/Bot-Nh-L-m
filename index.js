@@ -68,15 +68,25 @@ client.on('ready', () => {
 
 client.on('speech', async message => {
   let channel = client.channels.cache.get('943670868872142898')
-  const command = message.content?.toLowerCase()
-  if (command.includes('hey dj play')) {
+  if (
+    message.content?.includes('hey DJ play') ||
+    message.content?.includes('hey DJ Play') ||
+    message.content?.includes('Hey DJ play') ||
+    message.content?.includes('Hey DJ Play')
+  ) {
     let splitted = message.content.split('play') || message.content.split('Play')
     let second = splitted[1]
     channel.send('@p ' + second)
   }
-  if (command.includes('hey dj skip')) {
+  if (
+    message.content?.includes('Hey DJ skip') ||
+    message.content?.includes('Hey DJ Skip') ||
+    message.content?.includes('hey DJ skip') ||
+    message.content?.includes('hey DJ Skip')
+  ) {
     channel.send('@skip')
   }
+  // console.log(message.content)
   return
 })
 
