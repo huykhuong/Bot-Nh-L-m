@@ -2,6 +2,7 @@ const { DisTube } = require('distube')
 require('dotenv').config()
 const Discord = require('discord.js')
 const { addSpeechEvent } = require('discord-speech-recognition')
+const confessionFunction = require('./utils/anonymousMessenger.js')
 
 const client = new Discord.Client({
   intents: [
@@ -12,6 +13,7 @@ const client = new Discord.Client({
   ]
 })
 
+//Add speech event listner
 addSpeechEvent(client)
 
 const fs = require('fs')
@@ -22,6 +24,10 @@ const { YtDlpPlugin } = require('@distube/yt-dlp')
 
 //Global variable
 let username
+
+//Images and Video extensions
+const picExt = ['.webp', '.png', '.jpg', '.jpeg', '.gif']
+const videoExt = ['.mp4', '.webm', '.mov']
 
 client.config = require('./config.json')
 client.distube = new DisTube(client, {
@@ -66,12 +72,11 @@ client.on('speech', async message => {
   if (command.includes('hey dj play')) {
     let splitted = message.content.split('play') || message.content.split('Play')
     let second = splitted[1]
-    channel.send('<p ' + second)
+    channel.send('@p ' + second)
   }
   if (command.includes('hey dj skip')) {
-    channel.send('<skip')
+    channel.send('@skip')
   }
-  console.log(message.content)
   return
 })
 
@@ -92,6 +97,12 @@ client.on('messageCreate', async message => {
 
   if (!message.guild) return
   const prefix = config.prefix
+
+  if (message.channel.type === 'dm') {
+    console.log('working')
+    confessionFunction.sendAnonymously(client, message)
+  }
+
   if (!message.content.startsWith(prefix)) return
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()

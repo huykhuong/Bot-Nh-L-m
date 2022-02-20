@@ -35,7 +35,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            description: `Am busy singing at ${message.guild.me.voice.channel.name} room now !`,
+            description: `Am busy singing at ${message.guild.me.voice.channel.name} room !`,
             color: 'E91E63'
           }
         ]
