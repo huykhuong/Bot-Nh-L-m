@@ -9,8 +9,10 @@ const client = new Discord.Client({
     Discord.Intents.FLAGS.GUILDS,
     Discord.Intents.FLAGS.GUILD_MESSAGES,
     Discord.Intents.FLAGS.GUILD_VOICE_STATES,
-    Discord.Intents.FLAGS.GUILD_PRESENCES
-  ]
+    Discord.Intents.FLAGS.GUILD_PRESENCES,
+    Discord.Intents.FLAGS.DIRECT_MESSAGES
+  ],
+  partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 })
 
 //Add speech event listner
@@ -86,32 +88,39 @@ client.on('speech', async message => {
   ) {
     channel.send('@skip')
   }
+  if (
+    message.content?.includes('Hey DJ stop') ||
+    message.content?.includes('Hey DJ Stop') ||
+    message.content?.includes('hey DJ stop') ||
+    message.content?.includes('hey DJ Stop')
+  ) {
+    channel.send('@stop')
+  }
   // console.log(message.content)
   return
 })
 
 client.on('messageCreate', async message => {
-  if (message.member.user.username === 'StrawberryCookie') username = 'Huy Bánh'
-  else if (message.member.user.username === 'Subek') username = 'Đăng'
-  else if (message.member.user.username === 'Darren') username = 'Khang Darren'
-  else if (message.member.user.username === 'Light') username = 'Tiến'
-  else if (message.member.user.username === 'Azul') username = 'Hảo'
-  else if (message.member.user.username === 'Simoke') username = 'Tuyên'
-  else if (message.member.user.username === 'KSlay') username = 'K Lầy'
-  else if (message.member.user.username === 'Junsil') username = 'Béo'
-  else if (message.member.user.username === 'Người Chơi Kỹ Lăng') username = 'Tuấn'
-  else if (message.member.user.username === 'khangdaboi') username = 'Khangdaboi'
-  else if (message.member.user.username === 'Friendly Rock') username = 'Long Phạm'
-  else if (message.member.user.username === 'l0ngle') username = 'Long Valorant'
-  else if (message.member.user.username === 'iamhoudini') username = 'Hoàng'
+  if (message.member?.user.username === 'StrawberryCookie') username = 'Huy Bánh'
+  else if (message.member?.user.username === 'Subek') username = 'Đăng'
+  else if (message.member?.user.username === 'Darren') username = 'Khang Darren'
+  else if (message.member?.user.username === 'Light') username = 'Tiến'
+  else if (message.member?.user.username === 'Azul') username = 'Hảo'
+  else if (message.member?.user.username === 'Simoke') username = 'Tuyên'
+  else if (message.member?.user.username === 'KSlay') username = 'K Lầy'
+  else if (message.member?.user.username === 'Junsil') username = 'Béo'
+  else if (message.member?.user.username === 'Người Chơi Kỹ Lăng') username = 'Tuấn'
+  else if (message.member?.user.username === 'khangdaboi') username = 'Khangdaboi'
+  else if (message.member?.user.username === 'Friendly Rock') username = 'Long Phạm'
+  else if (message.member?.user.username === 'l0ngle') username = 'Long Valorant'
+  else if (message.member?.user.username === 'iamhoudini') username = 'Hoàng'
+
+  if (message.guild == null && message.author.id !== '943460556789141515') {
+    confessionFunction.sendAnonymously(client, message, picExt, videoExt)
+  }
 
   if (!message.guild) return
   const prefix = config.prefix
-
-  if (message.channel.type === 'dm') {
-    console.log('working')
-    confessionFunction.sendAnonymously(client, message)
-  }
 
   if (!message.content.startsWith(prefix)) return
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
