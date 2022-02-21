@@ -25,6 +25,7 @@
     "@distube/soundcloud": "^1.1.0",
     "@distube/spotify": "^1.2.1",
     "@distube/yt-dlp": "^0.0.2",
+    "@distube/ytdl-core": "^4.10.0",
     "axios": "^0.26.0",
     "discord-speech-recognition": "^2.2.0",
     "discord.js": "^13.6.0",
