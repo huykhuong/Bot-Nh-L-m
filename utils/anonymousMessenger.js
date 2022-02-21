@@ -5,7 +5,7 @@ module.exports.sendAnonymously = (client, message, picExt, videoExt) => {
   if (message.content.length > 1024) return message.channel.send('Confession only allows 1024 word count')
   else {
     message.channel.send('Confession sent')
-    const cfsChannel = client.channels.cache.get('943670868872142898')
+    const cfsChannel = client.channels.cache.get('409690970142015489')
     // const embed = new MessageEmbed().setDescription()
     // if (message.attachments.array().length > 0) {
     //   let attachment = message.attachments.array()[0]
