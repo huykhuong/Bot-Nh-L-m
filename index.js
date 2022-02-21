@@ -78,7 +78,7 @@ client.on('speech', async message => {
   ) {
     let splitted = message.content.split('play') || message.content.split('Play')
     let second = splitted[1]
-    channel.send('@p ' + second)
+    channel.send('<p ' + second)
   }
   if (
     message.content?.includes('Hey DJ skip') ||
@@ -86,7 +86,7 @@ client.on('speech', async message => {
     message.content?.includes('hey DJ skip') ||
     message.content?.includes('hey DJ Skip')
   ) {
-    channel.send('@skip')
+    channel.send('<skip')
   }
   if (
     message.content?.includes('Hey DJ stop') ||
@@ -94,7 +94,7 @@ client.on('speech', async message => {
     message.content?.includes('hey DJ stop') ||
     message.content?.includes('hey DJ Stop')
   ) {
-    channel.send('@stop')
+    channel.send('<stop')
   }
   // console.log(message.content)
   return
