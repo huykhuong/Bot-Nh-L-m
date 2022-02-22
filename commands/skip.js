@@ -15,7 +15,7 @@ module.exports = {
           }
         ]
       })
-    if (queue.songs.length === 1)
+    if (queue.songs.length === 1 && !queue.autoplay)
       return message.channel.send({
         embeds: [
           {
