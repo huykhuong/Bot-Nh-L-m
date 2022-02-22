@@ -8,7 +8,7 @@ module.exports = {
     const { channel } = message.member.voice
     let username = checker.checkName(message.member.user.username)
 
-    if (!queue) return message.channel.send(`${client.emotes.error} | Đang không hát bài nào hết :|`)
+    if (!queue) return message.channel.send(`${client.emotes.error} | Am not singing any song :|`)
 
     if (!channel)
       return message.channel.send({

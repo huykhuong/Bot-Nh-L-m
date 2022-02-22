@@ -15,6 +15,15 @@ module.exports = {
           }
         ]
       })
+    if (queue.songs.length === 1)
+      return message.channel.send({
+        embeds: [
+          {
+            description: `Cannot use this command when there is one song in the queue`,
+            color: 'E91E63'
+          }
+        ]
+      })
     try {
       const song = await queue.skip()
       return message.channel.send({

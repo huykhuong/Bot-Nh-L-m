@@ -3,6 +3,7 @@ require('dotenv').config()
 const Discord = require('discord.js')
 const { addSpeechEvent } = require('discord-speech-recognition')
 const confessionFunction = require('./utils/anonymousMessenger.js')
+const nameChecker = require('./utils/nameChecker.js')
 
 const client = new Discord.Client({
   intents: [
@@ -101,20 +102,6 @@ client.on('speech', async message => {
 })
 
 client.on('messageCreate', async message => {
-  if (message.member?.user.username === 'StrawberryCookie') username = 'Huy Bánh'
-  else if (message.member?.user.username === 'Subek') username = 'Đăng'
-  else if (message.member?.user.username === 'Darren') username = 'Khang Darren'
-  else if (message.member?.user.username === 'Light') username = 'Tiến'
-  else if (message.member?.user.username === 'Azul') username = 'Hảo'
-  else if (message.member?.user.username === 'Simoke') username = 'Tuyên'
-  else if (message.member?.user.username === 'KSlay') username = 'K Lầy'
-  else if (message.member?.user.username === 'Junsil') username = 'Béo'
-  else if (message.member?.user.username === 'Người Chơi Kỹ Lăng') username = 'Tuấn'
-  else if (message.member?.user.username === 'khangdaboi') username = 'Khangdaboi'
-  else if (message.member?.user.username === 'Friendly Rock') username = 'Long Phạm'
-  else if (message.member?.user.username === 'l0ngle') username = 'Long Valorant'
-  else if (message.member?.user.username === 'iamhoudini') username = 'Hoàng'
-
   if (message.guild == null && message.author.id !== '943460556789141515') {
     confessionFunction.sendAnonymously(client, message, picExt, videoExt)
   }
@@ -177,7 +164,8 @@ const status = queue =>
     queue.repeatMode ? (queue.repeatMode === 2 ? 'All Queue' : 'This Song') : 'Off'
   }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
 client.distube
-  .on('playSong', (queue, song) =>
+  .on('playSong', (queue, song) => {
+    username = nameChecker.checkName(song.user.username)
     queue.textChannel.send({
       embeds: [
         {
@@ -187,8 +175,9 @@ client.distube
         }
       ]
     })
-  )
-  .on('addSong', (queue, song) =>
+  })
+  .on('addSong', (queue, song) => {
+    username = nameChecker.checkName(song.user.username)
     queue.textChannel.send({
       embeds: [
         {
@@ -198,7 +187,7 @@ client.distube
         }
       ]
     })
-  )
+  })
   .on('addList', (queue, playlist) =>
     queue.textChannel.send({
       embeds: [
