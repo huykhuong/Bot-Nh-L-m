@@ -97,6 +97,14 @@ client.on('speech', async message => {
   ) {
     channel.send('<stop')
   }
+  if (
+    message.content?.includes('Hey DJ autoplay') ||
+    message.content?.includes('Hey DJ Autoplay') ||
+    message.content?.includes('hey DJ autoplay') ||
+    message.content?.includes('hey DJ Autoplay')
+  ) {
+    channel.send('<autoplay')
+  }
   // console.log(message.content)
   return
 })

@@ -1,7 +1,7 @@
 const checker = require('../utils/nameChecker.js')
 module.exports = {
   name: 'remove',
-  aliases: ['rm'],
+  aliases: ['rm, r'],
   inVoiceChannel: true,
   run: async (client, message, args) => {
     const queue = client.distube.getQueue(message)
