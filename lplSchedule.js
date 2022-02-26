@@ -1,97 +1,177 @@
 module.exports = [
   {
-    team1: 'BLG',
-    team2: 'Rogue Warriors',
-    date: new Date(2022, 02, 19)
-  },
-  {
-    team1: 'TOP',
-    team2: 'JDG',
-    date: new Date(2022, 02, 19)
-  },
-  {
-    team1: 'Vici Gaming',
-    team2: 'SinoDragon',
-    date: new Date(2022, 02, 20)
-  },
-  {
-    team1: 'EDG',
-    team2: 'IG',
-    date: new Date(2022, 02, 20)
-  },
-  {
-    team1: 'LNG',
-    team2: 'RNG',
-    date: new Date(2022, 02, 20)
-  },
-  {
     team1: 'V5',
-    team2: 'LGD',
-    date: new Date(2022, 02, 21)
+    team2: 'LNG',
+    date: new Date(2022, 02, 27)
   },
   {
-    team1: 'TOP',
+    team1: 'TT',
     team2: 'FPX',
-    date: new Date(2022, 02, 19)
+    date: new Date(2022, 02, 27)
   },
   {
     team1: 'JDG',
+    team2: 'BLG',
+    date: new Date(2022, 02, 27)
+  },
+  {
+    team1: 'WE',
+    team2: 'RA',
+    date: new Date(2022, 02, 28)
+  },
+  {
+    team1: 'LGD',
     team2: 'IG',
-    date: new Date(2022, 02, 22)
+    date: new Date(2022, 02, 28)
   },
   {
-    team1: 'RNG',
-    team2: 'Vici',
-    date: new Date(2022, 02, 22)
+    team1: 'UP',
+    team2: 'JDG',
+    date: new Date(2022, 03, 01)
   },
   {
-    team1: 'OMG',
-    team2: 'eStar',
-    date: new Date(2022, 02, 23)
+    team1: 'TES',
+    team2: 'BLG',
+    date: new Date(2022, 03, 01)
+  },
+  {
+    team1: 'LGD',
+    team2: 'EDG',
+    date: new Date(2022, 03, 02)
+  },
+  {
+    team1: 'WBG',
+    team2: 'RNG',
+    date: new Date(2022, 03, 02)
   },
   {
     team1: 'V5',
-    team2: 'EDG',
-    date: new Date(2022, 02, 23)
+    team2: 'JDG',
+    date: new Date(2022, 03, 04)
   },
   {
-    team1: 'WE',
-    team2: 'BLG',
-    date: new Date(2022, 02, 24)
-  },
-  {
-    team1: 'LNG',
-    team2: 'WEIBO GAMING',
-    date: new Date(2022, 02, 24)
-  },
-  {
-    team1: 'SinoDragon',
-    team2: 'LGD',
-    date: new Date(2022, 02, 25)
-  },
-  {
-    team1: 'Rogue Warriors',
-    team2: 'IG',
-    date: new Date(2022, 02, 25)
+    team1: 'TT',
+    team2: 'LNG',
+    date: new Date(2022, 03, 04)
   },
   {
     team1: 'FPX',
-    team2: 'Vici',
-    date: new Date(2022, 02, 25)
+    team2: 'BLG',
+    date: new Date(2022, 03, 04)
+  },
+  {
+    team1: 'WBG',
+    team2: 'LGD',
+    date: new Date(2022, 03, 05)
+  },
+  {
+    team1: 'IG',
+    team2: 'AL',
+    date: new Date(2022, 03, 05)
+  },
+  {
+    team1: 'EDG',
+    team2: 'RNG',
+    date: new Date(2022, 03, 05)
+  },
+  {
+    team1: 'V5',
+    team2: 'UP',
+    date: new Date(2022, 03, 06)
+  },
+  {
+    team1: 'OMG',
+    team2: 'RA',
+    date: new Date(2022, 03, 06)
+  },
+  {
+    team1: 'LNG',
+    team2: 'TES',
+    date: new Date(2022, 03, 06)
   },
   {
     team1: 'WE',
-    team2: 'eStar',
-    date: new Date(2022, 02, 26)
+    team2: 'FPX',
+    date: new Date(2022, 03, 07)
   },
   {
-    team1: 'WEIBO GAMING',
+    team1: 'EDG',
+    team2: 'AL',
+    date: new Date(2022, 03, 07)
+  },
+  {
+    team1: 'V5',
+    team2: 'BLG',
+    date: new Date(2022, 03, 08)
+  },
+  {
+    team1: 'JDG',
+    team2: 'LNG',
+    date: new Date(2022, 03, 08)
+  },
+  {
+    team1: 'LGD',
+    team2: 'RNG',
+    date: new Date(2022, 03, 09)
+  },
+  {
+    team1: 'UP',
+    team2: 'TT',
+    date: new Date(2022, 03, 09)
+  },
+  {
+    team1: 'OMG',
+    team2: 'FPX',
+    date: new Date(2022, 03, 10)
+  },
+  {
+    team1: 'WE',
     team2: 'IG',
-    date: new Date(2022, 02, 26)
+    date: new Date(2022, 03, 10)
   },
   {
-    team1: 'TOP',
-    team2: 'EDG',
-    date: new Date(2022, 02, 26)
+    team1: 'UP',
+    team2: 'RA',
+    date: new Date(2022, 03, 11)
+  },
+  {
+    team1: 'TT',
+    team2: 'JDG',
+    date: new Date(2022, 03, 11)
+  },
+  {
+    team1: 'WBG',
+    team2: 'TES',
+    date: new Date(2022, 03, 11)
+  },
+  {
+    team1: 'V5',
+    team2: 'AL',
+    date: new Date(2022, 03, 12)
+  },
+  {
+    team1: 'LNG',
+    team2: 'LGD',
+    date: new Date(2022, 03, 12)
+  },
+  {
+    team1: 'EDG',
+    team2: 'BLG',
+    date: new Date(2022, 03, 12)
+  },
+  {
+    team1: 'WBG',
+    team2: 'RA',
+    date: new Date(2022, 03, 13)
+  },
+  {
+    team1: 'TES',
+    team2: 'IG',
+    date: new Date(2022, 03, 13)
+  },
+  {
+    team1: 'RNG',
+    team2: 'WE',
+    date: new Date(2022, 03, 13)
   }
 ]
