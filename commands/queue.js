@@ -19,7 +19,7 @@ module.exports = {
           .map(
             (song, index) =>
               `**${index + counter * 20}** [${song.name}](${song.url}) - ${song.formattedDuration} ${
-                index === 0 && '- Am singing this song'
+                index === 0 ? '- Am singing this song' : ''
               } \n`
           )
           .join('\n')
