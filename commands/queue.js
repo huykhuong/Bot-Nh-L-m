@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'queue',
@@ -7,17 +7,27 @@ module.exports = {
     const queue = client.distube.getQueue(message)
     if (!queue) return message.channel.send(`${client.emotes.error} | Am not singing any song!`)
 
-    let embed = new MessageEmbed()
-      .setColor(E91E63)
-      .setTitle(`Song Queue`)
+    let embed = new MessageEmbed().setColor('E91E63').setTitle(`Song Queue`)
 
-    let counter = 0;
+    let counter = 0
     for (let i = 0; i < queue.songs.length; i += 20) {
-      if (counter >= 10) break;
-      let k = queue.songs;
-      let songs = k.slice(i, i + 20);
-      message.channel.send(embed.setDescription(songs.map((song, index) => `**${index + 1 + counter * 20}** [${song.name}](${song.url}) - ${song.formattedDuration}`)))
-      counter++;
+      if (counter >= 10) break
+      let k = queue.songs
+      let songs = k.slice(i, i + 20)
+      embed.setDescription(
+        songs
+          .map(
+            (song, index) =>
+              `**${index + counter * 20}** [${song.name}](${song.url}) - ${song.formattedDuration} ${
+                index === 0 && '- Am singing this song'
+              } \n`
+          )
+          .join('\n')
+      )
+
+      message.channel.send({ embeds: [embed] })
+
+      counter++
     }
     // const q = queue.songs
     //   .map((song, i) => `${i === 0 ? 'Singing:' : `${i}.`} ${song.name} - \`${song.formattedDuration}\``)
